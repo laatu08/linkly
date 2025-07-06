@@ -18,10 +18,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.className} h-full overflow-hidden bg-white text-gray-800`}>
+      <head>
+        {/* <link rel="shortcut icon" href={favicon} /> */}
+        <link rel="shortcut icon" href="./favicon.ico" />
+      </head>
+      <body
+        className={`${inter.className} h-full overflow-hidden bg-white text-gray-800`}
+      >
         <SessionWrapper>
-        <Navbar></Navbar>
-        <main>{children}</main>
+          <Navbar></Navbar>
+          <main>{children}</main>
         </SessionWrapper>
       </body>
     </html>
