@@ -1,5 +1,12 @@
 import { redirect } from "next/navigation";
 
-export default function RedirectPage({ params }: { params: { shortCode: string } }) {
+type ShortCodePageProps = {
+  params: {
+    shortCode: string;
+  };
+};
+
+
+export default function RedirectPage({ params }: ShortCodePageProps) {
   redirect(`/api/links/${params.shortCode}`);
 }
