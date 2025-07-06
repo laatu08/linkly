@@ -4,9 +4,15 @@ import { Link } from "@/model/Link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/route";
 
+type ShortCodePageProps = {
+  params: {
+    shortCode: string;
+  };
+};
+
 export async function GET(
   req: Request,
-  { params }: { params: { shortCode: string } }
+  { params }: ShortCodePageProps
 ) {
   const shortCode = params.shortCode;
   const userAgent = req.headers.get("user-agent") || "";
@@ -42,7 +48,7 @@ export async function GET(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { shortCode: string } }
+  { params }: ShortCodePageProps
 ) {
   const session = await getServerSession(authOptions);
   if (!session || !session.user?.email) {
